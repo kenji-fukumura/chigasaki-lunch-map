@@ -1,4 +1,3 @@
-
 const map = L.map('map').setView([35.3315, 139.4033], 15);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -7,6 +6,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 let restaurantMarkers = [];
 let homeMarker;
+let restaurantsData = []; // ← 追加：グローバルに保存
 
 const getToday = () => {
   const days = ["日", "月", "火", "水", "木", "金", "土"];
@@ -26,14 +26,12 @@ function fetchWeather() {
       const icon = data.weather[0].icon;
       const iconUrl = `https://openweathermap.org/img/wn/${icon}.png`;
 
-      // 詳細表示部分
       const weatherText = `<img src="${iconUrl}" alt="${weather}" /> ${weather} ${temp}℃`;
       const weatherDiv = document.getElementById("weather-info");
       if (weatherDiv) {
         weatherDiv.innerHTML = weatherText;
       }
 
-      // トグルボタン部分（文言固定、アイコンだけ更新）
       const toggleBtn = document.getElementById("weather-toggle");
       if (toggleBtn) {
         toggleBtn.innerHTML = `<img src="${iconUrl}" alt="${weather}" style="height:16px;width:16px;vertical-align:middle;margin-right:6px;"> 現在の天気`;
@@ -61,7 +59,6 @@ function renderMarkers(restaurants, selectedDay, selectedGenre) {
   restaurantMarkers = [];
 
   restaurants.forEach(spot => {
-    // ジャンルフィルタ
     if (selectedGenre !== "すべて" && spot.genre !== selectedGenre) {
       return;
     }
@@ -86,10 +83,11 @@ function renderMarkers(restaurants, selectedDay, selectedGenre) {
 fetch('data.json')
   .then(res => res.json())
   .then(restaurants => {
+    restaurantsData = restaurants; // ← 保存しておく
     const today = getToday();
+    const genre = document.getElementById('genre').value;
     document.getElementById('weekday').value = today;
-    document.getElementById('genre').value = "すべて"; // 初期値をセット
-    renderMarkers(restaurants, today, "すべて"); // 初回表示時にもジャンル渡す
+    renderMarkers(restaurantsData, today, genre);
 
     const myHome = {
       lat: 35.325965494228086,
@@ -109,21 +107,21 @@ fetch('data.json')
     homeMarker.bindPopup(homePopup).openPopup();
 
     // 曜日変更イベント
-    document.getElementById('weekday').addEventListener('change', (e) => {
-      const selectedDay = e.target.value;
+    document.getElementById('weekday').addEventListener('change', () => {
+      const selectedDay = document.getElementById('weekday').value;
       const selectedGenre = document.getElementById('genre').value;
-      renderMarkers(restaurants, selectedDay, selectedGenre);
+      renderMarkers(restaurantsData, selectedDay, selectedGenre);
     });
 
-    // ★ ジャンル変更イベント（追加）
+    // ジャンル変更イベント
     document.getElementById('genre').addEventListener('change', () => {
       const selectedDay = document.getElementById('weekday').value;
       const selectedGenre = document.getElementById('genre').value;
-      renderMarkers(window.restaurantsData, selectedDay, selectedGenre);
-  });
+      renderMarkers(restaurantsData, selectedDay, selectedGenre);
+    });
   });
 
-// トグル処理（詳細表示）
+// 天気詳細のトグル表示
 const toggleBtn = document.getElementById("weather-toggle");
 const weatherInfo = document.getElementById("weather-info");
 
