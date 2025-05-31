@@ -21,14 +21,14 @@ fetch('data.json')
       label: "🏠 自宅"
     };
 
-    const redIcon = L.icon({
-      iconUrl: "https://maps.gstatic.com/intl/en_us/mapfiles/markers2/marker_red.png",
-      iconSize: [20, 34],
-      iconAnchor: [10, 34],
-      popupAnchor: [0, -30]
-    });
+const redIcon = L.icon({
+  iconUrl: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png",
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [0, -35]
+});
 
-    L.marker([myHome.lat, myHome.lng], { icon: redIcon })
-      .addTo(map)
-      .bindPopup(myHome.label);
+L.marker([myHome.lat, myHome.lng], { icon: redIcon })
+  .addTo(map)
+  .bindPopup(myHome.label);
   });
