@@ -30,7 +30,7 @@ function fetchWeather() {
       const iconUrl = `https://openweathermap.org/img/wn/${icon}.png`;
 
       const weatherText = `<img src="${iconUrl}" alt="${weather}" /> ${weather} ${temp}℃（現在）`;
-      const weatherDiv = document.getElementById("weather");
+      const weatherDiv = document.getElementById("weather-info");
       if (weatherDiv) {
         weatherDiv.innerHTML = weatherText;
       } else {
@@ -39,7 +39,7 @@ function fetchWeather() {
     })
     .catch(err => {
       console.error("天気取得失敗:", err);
-      const weatherDiv = document.getElementById("weather");
+      const weatherDiv = document.getElementById("weather-info");
       if (weatherDiv) {
         weatherDiv.textContent = "天気取得に失敗しました";
       }
@@ -104,4 +104,17 @@ fetch('data.json')
       const selectedDay = e.target.value;
       renderMarkers(restaurants, selectedDay);
     });
+
+    // 天気表示のトグル切り替え
+  document.addEventListener('DOMContentLoaded', () => {
+  const toggleBtn = document.getElementById("weather-toggle");
+  const weatherInfo = document.getElementById("weather-info");
+
+  if (toggleBtn && weatherInfo) {
+    toggleBtn.addEventListener("click", () => {
+      const visible = weatherInfo.style.display !== "none";
+      weatherInfo.style.display = visible ? "none" : "block";
+    });
+  }
+});
   });
