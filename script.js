@@ -90,8 +90,8 @@ fetch('data.json')
     renderMarkers(restaurantsData, today, genre);
 
     const myHome = {
-      lat: 35.325965494228086,
-      lng: 139.4037473836777,
+      lat: 35.325965,
+      lng: 139.403694,
       label: "🏠 自宅"
     };
 
