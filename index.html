@@ -10,7 +10,7 @@
     body {
       margin: 0;
       font-family: 'Helvetica Neue', sans-serif;
-      background: linear-gradient(to bottom, #a0e0ff 0%, #fbeec1 100%); /* 空→砂浜 */
+      background: linear-gradient(to bottom, #a0e0ff 0%, #fbeec1 100%);
     }
 
     h1 {
@@ -42,6 +42,50 @@
       font-size: 14px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
+
+    #weather-toggle {
+      border: none;
+      background: transparent;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      padding: 0;
+      margin-bottom: 6px;
+    }
+
+    #weather-toggle img {
+      height: 20px;
+      width: 20px;
+      vertical-align: middle;
+    }
+
+    #weather-info {
+      display: none;
+      font-size: 13px;
+      background: #ffffffd0;
+      padding: 4px 6px;
+      border-radius: 8px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    }
+
+    #weekday-select-container {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    #controls label {
+      font-weight: bold;
+    }
+
+    #controls select {
+      padding: 4px 6px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 13px;
+    }
   </style>
 </head>
 <body>
@@ -50,23 +94,23 @@
   <!-- 地図 -->
   <div id="map"></div>
 
-<!-- 曜日選択 + 天気表示をまとめたコントロールボックス -->
-<div id="controls">
-  <button id="weather-toggle">🌤 天気</button>
-  <div id="weather-info">天気を取得中...</div>
-  <div id="weekday-select-container">
-    <label for="weekday">曜日：</label>
-    <select id="weekday">
-      <option value="日">日</option>
-      <option value="月">月</option>
-      <option value="火">火</option>
-      <option value="水">水</option>
-      <option value="木">木</option>
-      <option value="金">金</option>
-      <option value="土">土</option>
-    </select>
+  <!-- コントロールボックス -->
+  <div id="controls">
+    <button id="weather-toggle">天気取得中...</button>
+    <div id="weather-info">天気を取得中...</div>
+    <div id="weekday-select-container">
+      <label for="weekday">曜日：</label>
+      <select id="weekday">
+        <option value="日">日</option>
+        <option value="月">月</option>
+        <option value="火">火</option>
+        <option value="水">水</option>
+        <option value="木">木</option>
+        <option value="金">金</option>
+        <option value="土">土</option>
+      </select>
+    </div>
   </div>
-</div>
 
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script src="script.js"></script>
