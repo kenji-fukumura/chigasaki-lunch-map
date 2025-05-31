@@ -74,7 +74,7 @@ function renderMarkers(restaurants, selectedDay, selectedGenre) {
         <a href="${spot.url}" target="_blank"><strong>${spot.name}</strong></a><br/>
         ${statusText}
       `);
-    marker.bindPopup(popup).openPopup();
+    marker.bindPopup(popup);
 
     restaurantMarkers.push(marker);
   });
@@ -104,7 +104,7 @@ fetch('data.json')
 
     homeMarker = L.marker([myHome.lat, myHome.lng], { icon: redIcon }).addTo(map);
     const homePopup = L.popup({ autoClose: false, closeOnClick: false }).setContent(myHome.label);
-    homeMarker.bindPopup(homePopup).openPopup();
+    homeMarker.bindPopup(homePopup);
 
     // 曜日変更イベント
     document.getElementById('weekday').addEventListener('change', () => {
