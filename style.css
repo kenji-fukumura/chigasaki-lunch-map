@@ -36,9 +36,9 @@ h1 {
   font-size: 14px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
   border: 1px solid #dceef2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  text-align: left;         /* ← 中のテキストを左寄せ */
+  width: fit-content;       /* ← 内容に合わせて幅を自動調整 */
+  max-width: 95%;           /* ← モバイルでのはみ出しを防止 */
 }
 
 /* 天気表示 */
@@ -46,9 +46,9 @@ h1 {
   font-size: 13px;
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 6px;
   margin-bottom: 6px;
+  justify-content: flex-start;  /* ← 左寄せ */
 }
 
 /* ラベル・セレクトボックス */
