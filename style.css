@@ -3,12 +3,15 @@
   top: 12px;
   left: 12px;
   z-index: 1000;
-  background: rgba(255, 255, 255, 0.6);
-  padding: 6px 10px;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 8px 12px;
   border-radius: 10px;
   font-size: 13px;
-  box-shadow: none;
-  border: 1px solid rgba(200, 200, 200, 0.3);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-width: 90vw;
 }
 
 #weather {
@@ -16,9 +19,15 @@
   align-items: center;
   gap: 6px;
   font-size: 13px;
-  white-space: nowrap;        /* 折り返さず横に表示 */
-  overflow: hidden;           /* はみ出た部分は非表示（必要に応じて） */
-  text-overflow: ellipsis;    /* はみ出たら「…」で省略（必要に応じて） */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#weather img {
+  vertical-align: middle;
+  height: 20px;
+  width: 20px;
 }
 
 #weekday-select-container {
@@ -37,26 +46,28 @@
   border: 1px solid #ccc;
   font-size: 13px;
 }
-#weather-container {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  z-index: 1000;
-  background: rgba(255,255,255,0.8);
-  border-radius: 12px;
-  padding: 6px 10px;
-  font-size: 13px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-}
 
+/* トグルボタンと天気表示用（非表示時に使用） */
 #weather-toggle {
   border: none;
   background: none;
   font-size: 14px;
   cursor: pointer;
   color: #045b7f;
+  padding: 4px 0;
 }
 
 #weather-info {
   display: none;
+  margin-top: 4px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+#weather-info img {
+  vertical-align: middle;
+  height: 20px;
+  width: 20px;
 }
