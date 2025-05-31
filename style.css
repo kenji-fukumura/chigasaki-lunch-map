@@ -14,22 +14,7 @@
   max-width: 90vw;
 }
 
-#weather {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 13px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-#weather img {
-  vertical-align: middle;
-  height: 20px;
-  width: 20px;
-}
-
+/* 曜日セレクト */
 #weekday-select-container {
   display: flex;
   align-items: center;
@@ -47,27 +32,41 @@
   font-size: 13px;
 }
 
-/* トグルボタンと天気表示用（非表示時に使用） */
+/* トグル表示のボタン */
 #weather-toggle {
   border: none;
   background: none;
-  font-size: 14px;
+  font-size: 13px;
   cursor: pointer;
   color: #045b7f;
-  padding: 4px 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-align: left;
 }
 
+#weather-toggle img {
+  height: 20px;
+  width: 20px;
+  vertical-align: middle;
+}
+
+/* 天気詳細表示 */
 #weather-info {
   display: none;
-  margin-top: 4px;
   font-size: 13px;
   display: flex;
   align-items: center;
   gap: 6px;
+  padding: 2px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 #weather-info img {
-  vertical-align: middle;
   height: 20px;
   width: 20px;
+  vertical-align: middle;
 }
