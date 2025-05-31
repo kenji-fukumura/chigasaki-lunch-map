@@ -14,5 +14,12 @@
     "url": "https://s.tabelog.com/kanagawa/A1404/A140406/14013659/",
     "closed": ["月", "火"],
     "genre": "ラーメン"
+  }{
+    "name": "ホルモンマルモ",
+    "lat": 35.33138534925648,
+    "lng": 139.40646105648287,
+    "url": "https://tabelog.com/kanagawa/A1404/A140406/14072429/",
+    "closed": [],
+    "genre": "焼肉"
   }
 ]
