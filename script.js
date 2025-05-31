@@ -4,14 +4,28 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '© OpenStreetMap contributors'
 }).addTo(map);
 
+// 今日の曜日を取得（"日"〜"土"）
+const getToday = () => {
+  const days = ["日", "月", "火", "水", "木", "金", "土"];
+  return days[new Date().getDay()];
+};
+
 // 外部JSONファイルからデータ読み込み
 fetch('data.json')
   .then(res => res.json())
   .then(restaurants => {
+    const today = getToday();
+
     restaurants.forEach(spot => {
+      const isClosedToday = spot.closed && spot.closed.includes(today);
+      const statusText = isClosedToday ? "❌ 定休日" : "✅ 営業中";
+
       const marker = L.marker([spot.lat, spot.lng]).addTo(map);
       const popup = L.popup({ autoClose: false, closeOnClick: false })
-        .setContent(`<a href="${spot.url}" target="_blank">${spot.name}</a>`);
+        .setContent(`
+          <a href="${spot.url}" target="_blank"><strong>${spot.name}</strong></a><br/>
+          ${statusText}
+        `);
       marker.bindPopup(popup).openPopup(); // ← すべて開く
     });
 
