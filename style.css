@@ -7,3 +7,10 @@ body {
   height: 90vh;
   width: 100%;
 }
+#weather {
+  font-size: 14px;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
