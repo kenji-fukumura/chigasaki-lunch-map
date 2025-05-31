@@ -4,17 +4,14 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '© OpenStreetMap contributors'
 }).addTo(map);
 
-// グローバル変数
 let restaurantMarkers = [];
 let homeMarker;
 
-// 今日の曜日を取得
 const getToday = () => {
   const days = ["日", "月", "火", "水", "木", "金", "土"];
   return days[new Date().getDay()];
 };
 
-// 天気情報の取得
 const API_KEY = "64a9f612a58030710d4281a20aa785da";
 
 function fetchWeather() {
@@ -28,26 +25,33 @@ function fetchWeather() {
       const iconUrl = `https://openweathermap.org/img/wn/${icon}.png`;
 
       const weatherText = `<img src="${iconUrl}" alt="${weather}" /> ${weather} ${temp}℃（現在）`;
+
       const weatherDiv = document.getElementById("weather-info");
+      const toggleBtn = document.getElementById("weather-toggle");
+
       if (weatherDiv) {
         weatherDiv.innerHTML = weatherText;
-      } else {
-        console.warn("weather div not found");
+      }
+      if (toggleBtn) {
+        toggleBtn.innerHTML = `<img src="${iconUrl}" alt="${weather}" /> ${weather}`;
       }
     })
     .catch(err => {
       console.error("天気取得失敗:", err);
       const weatherDiv = document.getElementById("weather-info");
+      const toggleBtn = document.getElementById("weather-toggle");
+
       if (weatherDiv) {
         weatherDiv.textContent = "天気取得に失敗しました";
+      }
+      if (toggleBtn) {
+        toggleBtn.textContent = "天気取得失敗";
       }
     });
 }
 
-// 天気取得を即時実行
 fetchWeather();
 
-// 地図にピンを表示する関数
 function renderMarkers(restaurants, selectedDay) {
   restaurantMarkers.forEach(marker => map.removeLayer(marker));
   restaurantMarkers = [];
@@ -70,7 +74,6 @@ function renderMarkers(restaurants, selectedDay) {
   });
 }
 
-// 店情報取得・初期化
 fetch('data.json')
   .then(res => res.json())
   .then(restaurants => {
@@ -101,13 +104,13 @@ fetch('data.json')
     });
   });
 
-// ✅ 天気トグル処理（独立して記述する）
+// トグル処理
 const toggleBtn = document.getElementById("weather-toggle");
 const weatherInfo = document.getElementById("weather-info");
 
 if (toggleBtn && weatherInfo) {
   toggleBtn.addEventListener("click", () => {
     const visible = weatherInfo.style.display !== "none";
-    weatherInfo.style.display = visible ? "none" : "block";
+    weatherInfo.style.display = visible ? "none" : "flex";
   });
 }
