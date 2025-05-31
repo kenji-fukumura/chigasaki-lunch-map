@@ -14,6 +14,7 @@ const getToday = () => {
 
 const API_KEY = "64a9f612a58030710d4281a20aa785da";
 
+// 天気取得と表示
 function fetchWeather() {
   const url = `https://api.openweathermap.org/data/2.5/weather?q=Chigasaki,jp&units=metric&lang=ja&appid=${API_KEY}`;
   fetch(url)
@@ -24,32 +25,23 @@ function fetchWeather() {
       const icon = data.weather[0].icon;
       const iconUrl = `https://openweathermap.org/img/wn/${icon}.png`;
 
-      const weatherText = `<img src="${iconUrl}" alt="${weather}" /> ${weather} ${temp}℃（現在）`;
+      const weatherText = `<img src="${iconUrl}" alt="${weather}" /> ${weather} ${temp}℃`;
 
       const weatherDiv = document.getElementById("weather-info");
-      const toggleBtn = document.getElementById("weather-toggle");
-
       if (weatherDiv) {
         weatherDiv.innerHTML = weatherText;
-      }
-      if (toggleBtn) {
-        toggleBtn.innerHTML = `<img src="${iconUrl}" alt="${weather}" /> ${weather}`;
       }
     })
     .catch(err => {
       console.error("天気取得失敗:", err);
       const weatherDiv = document.getElementById("weather-info");
-      const toggleBtn = document.getElementById("weather-toggle");
-
       if (weatherDiv) {
         weatherDiv.textContent = "天気取得に失敗しました";
-      }
-      if (toggleBtn) {
-        toggleBtn.textContent = "天気取得失敗";
       }
     });
 }
 
+// 初期表示
 fetchWeather();
 
 function renderMarkers(restaurants, selectedDay) {
@@ -104,11 +96,12 @@ fetch('data.json')
     });
   });
 
-// トグル処理
+// トグル処理（☀️ 現在の天気 → 詳細表示）
 const toggleBtn = document.getElementById("weather-toggle");
 const weatherInfo = document.getElementById("weather-info");
 
 if (toggleBtn && weatherInfo) {
+  toggleBtn.textContent = "☀️ 現在の天気"; // ←常にこの文言に固定
   toggleBtn.addEventListener("click", () => {
     const visible = weatherInfo.style.display !== "none";
     weatherInfo.style.display = visible ? "none" : "flex";
