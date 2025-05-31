@@ -13,4 +13,22 @@ fetch('data.json')
         .addTo(map)
         .bindPopup(`<a href="${spot.url}" target="_blank">${spot.name}</a>`);
     });
+
+    // 🔴 自宅の赤ピンを追加
+    const myHome = {
+      lat: 35.325965494228086,  // ← あなたの自宅の緯度に変更してください
+      lng: 139.4037473836777, // ← あなたの自宅の経度に変更してください
+      label: "🏠 自宅"
+    };
+
+    const redIcon = L.icon({
+      iconUrl: "https://maps.gstatic.com/intl/en_us/mapfiles/markers2/marker_red.png",
+      iconSize: [20, 34],
+      iconAnchor: [10, 34],
+      popupAnchor: [0, -30]
+    });
+
+    L.marker([myHome.lat, myHome.lng], { icon: redIcon })
+      .addTo(map)
+      .bindPopup(myHome.label);
   });
