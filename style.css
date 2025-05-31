@@ -1,3 +1,4 @@
+
 #controls {
   position: absolute;
   top: 12px;
@@ -32,7 +33,20 @@
   font-size: 13px;
 }
 
-/* トグル表示のボタン（重複削除・最適化） */
+/* トグル表示のボタン */
+#weather-toggle {
+  border: none;
+  background: none;
+  font-size: 13px;
+  cursor: pointer;
+  color: #045b7f;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-align: left;
+}
+
 #weather-toggle {
   border: none;
   background: none;
@@ -40,13 +54,8 @@
   cursor: pointer;
   color: #045b7f;
   padding: 4px 0;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  text-align: left;
 }
 
-/* 天気詳細表示 */
 #weather-info {
   display: none;
   margin-top: 4px;
@@ -54,14 +63,12 @@
   display: flex;
   align-items: center;
   gap: 6px;
+  background: linear-gradient(to bottom right, rgba(255,255,255,0.95), rgba(240,240,240,0.9));
   padding: 6px 10px;
   border-radius: 10px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   border: 1px solid rgba(200, 200, 200, 0.3);
   backdrop-filter: blur(4px);
-
-  /* デフォルトの背景（JSで上書きされる） */
-  background: linear-gradient(to bottom right, rgba(255,255,255,0.95), rgba(240,240,240,0.9));
 }
 
 #weather-info img {
