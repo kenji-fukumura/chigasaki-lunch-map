@@ -25,23 +25,34 @@ function fetchWeather() {
       const icon = data.weather[0].icon;
       const iconUrl = `https://openweathermap.org/img/wn/${icon}.png`;
 
+      // 詳細表示部分
       const weatherText = `<img src="${iconUrl}" alt="${weather}" /> ${weather} ${temp}℃`;
-
       const weatherDiv = document.getElementById("weather-info");
       if (weatherDiv) {
         weatherDiv.innerHTML = weatherText;
+      }
+
+      // トグルボタン部分（文言固定、アイコンだけ更新）
+      const toggleBtn = document.getElementById("weather-toggle");
+      if (toggleBtn) {
+        toggleBtn.innerHTML = `<img src="${iconUrl}" alt="${weather}" style="height:16px;width:16px;vertical-align:middle;margin-right:6px;"> 現在の天気`;
       }
     })
     .catch(err => {
       console.error("天気取得失敗:", err);
       const weatherDiv = document.getElementById("weather-info");
+      const toggleBtn = document.getElementById("weather-toggle");
+
       if (weatherDiv) {
         weatherDiv.textContent = "天気取得に失敗しました";
+      }
+      if (toggleBtn) {
+        toggleBtn.textContent = "現在の天気（取得失敗）";
       }
     });
 }
 
-// 初期表示
+// 初期実行
 fetchWeather();
 
 function renderMarkers(restaurants, selectedDay) {
@@ -96,12 +107,11 @@ fetch('data.json')
     });
   });
 
-// トグル処理（☀️ 現在の天気 → 詳細表示）
+// トグル処理（詳細表示）
 const toggleBtn = document.getElementById("weather-toggle");
 const weatherInfo = document.getElementById("weather-info");
 
 if (toggleBtn && weatherInfo) {
-  toggleBtn.textContent = "☀️ 現在の天気"; // ←常にこの文言に固定
   toggleBtn.addEventListener("click", () => {
     const visible = weatherInfo.style.display !== "none";
     weatherInfo.style.display = visible ? "none" : "flex";
