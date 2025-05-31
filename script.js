@@ -12,6 +12,7 @@ fetch('data.json')
       L.marker([spot.lat, spot.lng])
         .addTo(map)
         .bindPopup(`<a href="${spot.url}" target="_blank">${spot.name}</a>`);
+        .openPopup();
     });
 
     // 🔴 自宅の赤ピンを追加
@@ -31,4 +32,5 @@ const redIcon = L.icon({
 L.marker([myHome.lat, myHome.lng], { icon: redIcon })
   .addTo(map)
   .bindPopup(myHome.label);
+  .openPopup();
   });
