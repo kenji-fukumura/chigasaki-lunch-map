@@ -14,6 +14,31 @@ const getToday = () => {
   return days[new Date().getDay()];
 };
 
+// 天気情報の取得
+// 🔑 ここにあなたのAPIキーを入力
+const API_KEY = "64a9f612a58030710d4281a20aa785da";
+
+function fetchWeather() {
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=Chigasaki,jp&units=metric&lang=ja&appid=${API_KEY}`;
+  fetch(url)
+    .then(res => res.json())
+    .then(data => {
+      const temp = Math.round(data.main.temp);
+      const weather = data.weather[0].description;
+      const icon = data.weather[0].icon;
+      const iconUrl = `https://openweathermap.org/img/wn/${icon}.png`;
+
+      const weatherText = `🌤️ ${weather} ${temp}℃（茅ヶ崎） <img src="${iconUrl}" alt="${weather}" />`;
+      document.getElementById("weather").innerHTML = weatherText;
+    })
+    .catch(err => {
+      console.error("天気取得失敗:", err);
+      document.getElementById("weather").textContent = "天気取得に失敗しました";
+    });
+}
+
+fetchWeather();
+
 // 地図にピンを表示する関数
 function renderMarkers(restaurants, selectedDay) {
   // 一度削除（重複しないよう）
