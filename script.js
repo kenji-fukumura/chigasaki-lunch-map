@@ -56,11 +56,16 @@ function fetchWeather() {
 // 初期実行
 fetchWeather();
 
-function renderMarkers(restaurants, selectedDay) {
+function renderMarkers(restaurants, selectedDay, selectedGenre) {
   restaurantMarkers.forEach(marker => map.removeLayer(marker));
   restaurantMarkers = [];
 
   restaurants.forEach(spot => {
+    // ジャンルフィルタ
+    if (selectedGenre !== "すべて" && spot.genre !== selectedGenre) {
+      return;
+    }
+
     const isClosedToday =
       Array.isArray(spot.closed) &&
       spot.closed.some(day => day.trim() === selectedDay);
@@ -83,7 +88,8 @@ fetch('data.json')
   .then(restaurants => {
     const today = getToday();
     document.getElementById('weekday').value = today;
-    renderMarkers(restaurants, today);
+    document.getElementById('genre').value = "すべて"; // 初期値をセット
+    renderMarkers(restaurants, today, "すべて"); // 初回表示時にもジャンル渡す
 
     const myHome = {
       lat: 35.325965494228086,
@@ -102,9 +108,18 @@ fetch('data.json')
     const homePopup = L.popup({ autoClose: false, closeOnClick: false }).setContent(myHome.label);
     homeMarker.bindPopup(homePopup).openPopup();
 
+    // 曜日変更イベント
     document.getElementById('weekday').addEventListener('change', (e) => {
       const selectedDay = e.target.value;
-      renderMarkers(restaurants, selectedDay);
+      const selectedGenre = document.getElementById('genre').value;
+      renderMarkers(restaurants, selectedDay, selectedGenre);
+    });
+
+    // ★ ジャンル変更イベント（追加）
+    document.getElementById('genre').addEventListener('change', (e) => {
+      const selectedDay = document.getElementById('weekday').value;
+      const selectedGenre = e.target.value;
+      renderMarkers(restaurants, selectedDay, selectedGenre);
     });
   });
 
