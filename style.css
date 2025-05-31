@@ -22,30 +22,36 @@ h1 {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-#weather {
-  margin-bottom: 8px;
-  font-size: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-}
-
-/* コントロールボックス（曜日セレクトなど） */
+/* 天気・曜日をまとめたUIボックス */
 #controls {
   position: absolute;
-  top: 60px;
-  left: 10px;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 1000;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(6px);
   padding: 10px 16px;
   border-radius: 14px;
   font-size: 14px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
   border: 1px solid #dceef2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
+/* 天気表示 */
+#weather {
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+/* ラベル・セレクトボックス */
 #controls label {
   font-weight: bold;
   margin-right: 6px;
@@ -66,16 +72,14 @@ h1 {
   }
 
   #controls {
-    top: 10px;
-    left: 50%;
-    transform: translateX(-50%);
+    top: 8px;
     width: 90%;
     font-size: 13px;
-    padding: 8px;
+    padding: 8px 10px;
   }
 
   #weather {
-    font-size: 13px;
+    font-size: 12px;
     gap: 4px;
   }
 
@@ -84,6 +88,6 @@ h1 {
   }
 
   select {
-    font-size: 14px;
+    font-size: 13px;
   }
 }
