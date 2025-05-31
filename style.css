@@ -58,5 +58,5 @@
 }
 
 #weather-info {
-  margin-top: 6px;
+  display: none;
 }
