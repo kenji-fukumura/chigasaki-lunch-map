@@ -8,9 +8,9 @@ body {
   width: 100%;
 }
 #weather {
+  margin-bottom: 8px;
   font-size: 14px;
-  margin-bottom: 6px;
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
 }
