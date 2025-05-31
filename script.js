@@ -29,7 +29,7 @@ function fetchWeather() {
       const icon = data.weather[0].icon;
       const iconUrl = `https://openweathermap.org/img/wn/${icon}.png`;
 
-      const weatherText = `<img src="${iconUrl}" alt="${weather}" /> ${weather} ${temp}℃（茅ヶ崎）`;
+      const weatherText = `<img src="${iconUrl}" alt="${weather}" /> ${weather} ${temp}℃（現在）`;
       const weatherDiv = document.getElementById("weather");
       if (weatherDiv) {
         weatherDiv.innerHTML = weatherText;
