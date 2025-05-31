@@ -6,21 +6,45 @@
   <title>茅ヶ崎ランチマップ</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ⭐ 地図のサイズを確保 */
+    #map {
+      height: 100vh;
+    }
+
+    /* ⭐ 曜日セレクトボックスを地図に重ねる */
+    #controls {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 6px 10px;
+      border-radius: 8px;
+      font-size: 14px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+    }
+  </style>
 </head>
 <body>
   <h1>茅ヶ崎ランチマップ</h1>
+
+  <!-- ⭐ 地図エリア -->
   <div id="map"></div>
 
-  <label for="weekday">曜日を選択：</label>
-<select id="weekday">
-  <option value="日">日</option>
-  <option value="月">月</option>
-  <option value="火">火</option>
-  <option value="水">水</option>
-  <option value="木">木</option>
-  <option value="金">金</option>
-  <option value="土">土</option>
-</select>
+  <!-- ⭐ 曜日セレクトボックス：地図に重ねて表示 -->
+  <div id="controls">
+    <label for="weekday">曜日：</label>
+    <select id="weekday">
+      <option value="日">日</option>
+      <option value="月">月</option>
+      <option value="火">火</option>
+      <option value="水">水</option>
+      <option value="木">木</option>
+      <option value="金">金</option>
+      <option value="土">土</option>
+    </select>
+  </div>
 
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script src="script.js"></script>
