@@ -17,7 +17,10 @@ fetch('data.json')
     const today = getToday();
 
     restaurants.forEach(spot => {
-      const isClosedToday = spot.closed && spot.closed.includes(today);
+      // 定休日判定（安全に配列かつトリム）
+      const isClosedToday =
+        Array.isArray(spot.closed) &&
+        spot.closed.map(day => day.trim()).includes(today);
       const statusText = isClosedToday ? "❌ 定休日" : "✅ 営業中";
 
       const marker = L.marker([spot.lat, spot.lng]).addTo(map);
@@ -26,7 +29,7 @@ fetch('data.json')
           <a href="${spot.url}" target="_blank"><strong>${spot.name}</strong></a><br/>
           ${statusText}
         `);
-      marker.bindPopup(popup).openPopup(); // ← すべて開く
+      marker.bindPopup(popup).openPopup();
     });
 
     // 🔴 自宅の赤ピンを追加
@@ -46,5 +49,5 @@ fetch('data.json')
     const homeMarker = L.marker([myHome.lat, myHome.lng], { icon: redIcon }).addTo(map);
     const homePopup = L.popup({ autoClose: false, closeOnClick: false })
       .setContent(myHome.label);
-    homeMarker.bindPopup(homePopup).openPopup(); // ← 自宅も開いたまま
+    homeMarker.bindPopup(homePopup).openPopup();
   });
