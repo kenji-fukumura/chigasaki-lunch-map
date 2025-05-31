@@ -18,6 +18,7 @@ const getToday = () => {
 // 🔑 ここにあなたのAPIキーを入力
 const API_KEY = "64a9f612a58030710d4281a20aa785da";
 
+// 天気取得
 function fetchWeather() {
   const url = `https://api.openweathermap.org/data/2.5/weather?q=Chigasaki,jp&units=metric&lang=ja&appid=${API_KEY}`;
   fetch(url)
@@ -28,15 +29,24 @@ function fetchWeather() {
       const icon = data.weather[0].icon;
       const iconUrl = `https://openweathermap.org/img/wn/${icon}.png`;
 
-      const weatherText = `🌤️ ${weather} ${temp}℃（茅ヶ崎） <img src="${iconUrl}" alt="${weather}" />`;
-      document.getElementById("weather").innerHTML = weatherText;
+      const weatherText = `<img src="${iconUrl}" alt="${weather}" /> ${weather} ${temp}℃（茅ヶ崎）`;
+      const weatherDiv = document.getElementById("weather");
+      if (weatherDiv) {
+        weatherDiv.innerHTML = weatherText;
+      } else {
+        console.warn("weather div not found");
+      }
     })
     .catch(err => {
       console.error("天気取得失敗:", err);
-      document.getElementById("weather").textContent = "天気取得に失敗しました";
+      const weatherDiv = document.getElementById("weather");
+      if (weatherDiv) {
+        weatherDiv.textContent = "天気取得に失敗しました";
+      }
     });
 }
 
+// 🔁 実行
 fetchWeather();
 
 // 地図にピンを表示する関数
