@@ -1,16 +1,89 @@
 body {
   margin: 0;
-  font-family: sans-serif;
+  font-family: 'Helvetica Neue', sans-serif;
   text-align: center;
+  background: linear-gradient(to bottom, #cdefff 0%, #fffbe0 100%);
+  color: #045b7f;
 }
+
+h1 {
+  font-size: 26px;
+  margin: 16px 0;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
 #map {
   height: 90vh;
   width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
+
 #weather {
   margin-bottom: 8px;
   font-size: 14px;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
+}
+
+/* コントロールボックス（曜日セレクトなど） */
+#controls {
+  position: absolute;
+  top: 60px;
+  left: 10px;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(6px);
+  padding: 10px 16px;
+  border-radius: 14px;
+  font-size: 14px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  border: 1px solid #dceef2;
+}
+
+#controls label {
+  font-weight: bold;
+  margin-right: 6px;
+}
+
+#controls select {
+  padding: 4px 6px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+/* モバイル対応 */
+@media screen and (max-width: 600px) {
+  h1 {
+    font-size: 20px;
+    margin: 10px 0;
+  }
+
+  #controls {
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    font-size: 13px;
+    padding: 8px;
+  }
+
+  #weather {
+    font-size: 13px;
+    gap: 4px;
+  }
+
+  #map {
+    height: 85vh;
+  }
+
+  select {
+    font-size: 14px;
+  }
 }
