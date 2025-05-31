@@ -52,7 +52,8 @@
 
 <!-- 曜日選択 + 天気表示をまとめたコントロールボックス -->
 <div id="controls">
-  <div id="weather">天気を取得中...</div>
+  <button id="weather-toggle">🌤 天気</button>
+  <div id="weather-info">天気を取得中...</div>
   <div id="weekday-select-container">
     <label for="weekday">曜日：</label>
     <select id="weekday">
@@ -65,11 +66,6 @@
       <option value="土">土</option>
     </select>
   </div>
-</div>
-
-<div id="weather-panel">
-  <button id="weather-toggle">🌤 天気</button>
-  <div id="weather-info">天気を取得中...</div>
 </div>
 
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
