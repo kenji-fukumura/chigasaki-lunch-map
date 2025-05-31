@@ -23,7 +23,7 @@ fetch('data.json')
       const isClosedToday =
         Array.isArray(spot.closed) &&
         spot.closed.some(day => day.trim() === today);
-      const statusText = isClosedToday ? "❌ 定休日" : "✅ 営業中";
+      const statusText = isClosedToday ? "❌ 定休日" : "✅ 営業日";
 
       const marker = L.marker([spot.lat, spot.lng]).addTo(map);
       const popup = L.popup({ autoClose: false, closeOnClick: false })
