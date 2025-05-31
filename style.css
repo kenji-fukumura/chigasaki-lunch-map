@@ -79,8 +79,8 @@
 
 #genre-filter {
   position: absolute;
-  top: 12px;
-  right: 12px;
+  top: 12px;              /* ← 天気情報と揃えるためにここを設定 */
+  right: 12px;            /* ← 右上に配置 */
   z-index: 1000;
   background: rgba(255, 255, 255, 0.8);
   padding: 8px 12px;
@@ -90,7 +90,7 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  backdrop-filter: blur(4px); /* 天気情報と同じ */
+  backdrop-filter: blur(4px);
 }
 #genre-filter select {
   padding: 4px 6px;
