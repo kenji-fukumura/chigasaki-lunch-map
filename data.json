@@ -10,7 +10,7 @@
   {
     "name": "麺や鎧",
     "lat": 35.324685,
-    "lng": 139.406023
+    "lng": 139.406023,
     "url": "https://s.tabelog.com/kanagawa/A1404/A140406/14013659/",
     "closed": ["月", "火"],
     "genre": "ラーメン"
