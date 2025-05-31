@@ -116,11 +116,11 @@ fetch('data.json')
     });
 
     // ★ ジャンル変更イベント（追加）
-    document.getElementById('genre').addEventListener('change', (e) => {
+    document.getElementById('genre').addEventListener('change', () => {
       const selectedDay = document.getElementById('weekday').value;
-      const selectedGenre = e.target.value;
-      renderMarkers(restaurants, selectedDay, selectedGenre);
-    });
+      const selectedGenre = document.getElementById('genre').value;
+      renderMarkers(window.restaurantsData, selectedDay, selectedGenre);
+  });
   });
 
 // トグル処理（詳細表示）
