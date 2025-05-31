@@ -15,10 +15,8 @@ const getToday = () => {
 };
 
 // 天気情報の取得
-// 🔑 ここにあなたのAPIキーを入力
 const API_KEY = "64a9f612a58030710d4281a20aa785da";
 
-// 天気取得
 function fetchWeather() {
   const url = `https://api.openweathermap.org/data/2.5/weather?q=Chigasaki,jp&units=metric&lang=ja&appid=${API_KEY}`;
   fetch(url)
@@ -46,12 +44,11 @@ function fetchWeather() {
     });
 }
 
-// 🔁 実行
+// 天気取得を即時実行
 fetchWeather();
 
 // 地図にピンを表示する関数
 function renderMarkers(restaurants, selectedDay) {
-  // 一度削除（重複しないよう）
   restaurantMarkers.forEach(marker => map.removeLayer(marker));
   restaurantMarkers = [];
 
@@ -73,15 +70,14 @@ function renderMarkers(restaurants, selectedDay) {
   });
 }
 
+// 店情報取得・初期化
 fetch('data.json')
   .then(res => res.json())
   .then(restaurants => {
-    // 初期状態で今日の曜日を使う
     const today = getToday();
     document.getElementById('weekday').value = today;
     renderMarkers(restaurants, today);
 
-    // 自宅ピンは1回だけ表示
     const myHome = {
       lat: 35.325965494228086,
       lng: 139.4037473836777,
@@ -99,22 +95,19 @@ fetch('data.json')
     const homePopup = L.popup({ autoClose: false, closeOnClick: false }).setContent(myHome.label);
     homeMarker.bindPopup(homePopup).openPopup();
 
-    // セレクトボックスの変更時に営業判定を再描画
     document.getElementById('weekday').addEventListener('change', (e) => {
       const selectedDay = e.target.value;
       renderMarkers(restaurants, selectedDay);
     });
-
-    // 天気表示のトグル切り替え
-  document.addEventListener('DOMContentLoaded', () => {
-  const toggleBtn = document.getElementById("weather-toggle");
-  const weatherInfo = document.getElementById("weather-info");
-
-  if (toggleBtn && weatherInfo) {
-    toggleBtn.addEventListener("click", () => {
-      const visible = weatherInfo.style.display !== "none";
-      weatherInfo.style.display = visible ? "none" : "block";
-    });
-  }
-});
   });
+
+// ✅ 天気トグル処理（独立して記述する）
+const toggleBtn = document.getElementById("weather-toggle");
+const weatherInfo = document.getElementById("weather-info");
+
+if (toggleBtn && weatherInfo) {
+  toggleBtn.addEventListener("click", () => {
+    const visible = weatherInfo.style.display !== "none";
+    weatherInfo.style.display = visible ? "none" : "block";
+  });
+}
