@@ -4,13 +4,15 @@
     "lat": 35.327504737478975,
     "lng": 139.40405765484167,
     "url": "https://s.tabelog.com/kanagawa/A1404/A140406/14055872/",
-    "closed": ["土"]
+    "closed": ["土"],
+    "genre": "中華"
   },
   {
     "name": "鎧",
     "lat": 35.324598558614284,
     "lng": 139.40602103176784,
     "url": "https://s.tabelog.com/kanagawa/A1404/A140406/14013659/",
-    "closed": ["月", "火"]
+    "closed": ["月", "火"],
+    "genre": "ラーメン"
   }
 ]
