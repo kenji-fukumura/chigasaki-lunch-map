@@ -17,10 +17,12 @@ fetch('data.json')
     const today = getToday();
 
     restaurants.forEach(spot => {
-      // 定休日判定（安全に配列かつトリム）
+      console.log("name:", spot.name, "closed:", spot.closed, "typeof:", typeof spot.closed);
+
+      // 安全な定休日チェック（配列であることを保証）
       const isClosedToday =
         Array.isArray(spot.closed) &&
-        spot.closed.map(day => day.trim()).includes(today);
+        spot.closed.some(day => day.trim() === today);
       const statusText = isClosedToday ? "❌ 定休日" : "✅ 営業中";
 
       const marker = L.marker([spot.lat, spot.lng]).addTo(map);
