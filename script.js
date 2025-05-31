@@ -11,7 +11,7 @@ fetch('data.json')
     restaurants.forEach(spot => {
       L.marker([spot.lat, spot.lng])
         .addTo(map)
-        .bindPopup(`<a href="${spot.url}" target="_blank">${spot.name}</a>`);
+        .bindPopup(`<a href="${spot.url}" target="_blank">${spot.name}</a>`)
         .openPopup();
     });
 
@@ -31,6 +31,6 @@ const redIcon = L.icon({
 
 L.marker([myHome.lat, myHome.lng], { icon: redIcon })
   .addTo(map)
-  .bindPopup(myHome.label);
+  .bindPopup(myHome.label)
   .openPopup();
   });
