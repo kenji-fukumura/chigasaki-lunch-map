@@ -22,8 +22,9 @@
   align-items: center;
   gap: 6px;
   font-size: 13px;
-  max-width: 180px;
-  flex-wrap: wrap;
+  white-space: nowrap;        /* 折り返さず横に表示 */
+  overflow: hidden;           /* はみ出た部分は非表示（必要に応じて） */
+  text-overflow: ellipsis;    /* はみ出たら「…」で省略（必要に応じて） */
 }
 
 #weekday-select-container {
