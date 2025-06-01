@@ -6,7 +6,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 let restaurantMarkers = [];
 let homeMarker;
-let restaurantsData = []; // ← 追加：グローバルに保存
+let restaurantsData = [];
 
 const getToday = () => {
   const days = ["日", "月", "火", "水", "木", "金", "土"];
@@ -54,7 +54,8 @@ function fetchWeather() {
 // 初期実行
 fetchWeather();
 
-function renderMarkers(restaurants, selectedDay, selectedGenre) {
+// マーカー表示関数（openPopup引数で制御）
+function renderMarkers(restaurants, selectedDay, selectedGenre, openPopup = false) {
   restaurantMarkers.forEach(marker => map.removeLayer(marker));
   restaurantMarkers = [];
 
@@ -76,6 +77,10 @@ function renderMarkers(restaurants, selectedDay, selectedGenre) {
       `);
     marker.bindPopup(popup);
 
+    if (openPopup && selectedGenre !== "すべて") {
+      marker.openPopup();
+    }
+
     restaurantMarkers.push(marker);
   });
 }
@@ -83,7 +88,7 @@ function renderMarkers(restaurants, selectedDay, selectedGenre) {
 fetch('data.json')
   .then(res => res.json())
   .then(restaurants => {
-    restaurantsData = restaurants; // ← 保存しておく
+    restaurantsData = restaurants;
     const today = getToday();
     const genre = document.getElementById('genre').value;
     document.getElementById('weekday').value = today;
@@ -106,18 +111,18 @@ fetch('data.json')
     const homePopup = L.popup({ autoClose: false, closeOnClick: false }).setContent(myHome.label);
     homeMarker.bindPopup(homePopup);
 
-    // 曜日変更イベント
+    // 曜日変更イベント（ポップアップ非表示）
     document.getElementById('weekday').addEventListener('change', () => {
       const selectedDay = document.getElementById('weekday').value;
       const selectedGenre = document.getElementById('genre').value;
-      renderMarkers(restaurantsData, selectedDay, selectedGenre);
+      renderMarkers(restaurantsData, selectedDay, selectedGenre, false);
     });
 
-    // ジャンル変更イベント
+    // ジャンル変更イベント（ポップアップ表示 ※ただし"すべて"以外）
     document.getElementById('genre').addEventListener('change', () => {
       const selectedDay = document.getElementById('weekday').value;
       const selectedGenre = document.getElementById('genre').value;
-      renderMarkers(restaurantsData, selectedDay, selectedGenre);
+      renderMarkers(restaurantsData, selectedDay, selectedGenre, true);
     });
   });
 
