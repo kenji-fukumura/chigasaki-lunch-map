@@ -54,5 +54,13 @@
     "url": "https://tabelog.com/kanagawa/A1404/A140406/14072429/",
     "closed": [],
     "genre": "焼肉"
+  },
+  {
+    "name": "海ごはんOhana",
+    "lat": 35.256196,
+    "lng": 139.581828,
+    "url": "https://tabelog.com/kanagawa/A1406/A140602/14093521/",
+    "closed": ["火", "水"],
+    "genre": "定食"
   }
 ]
