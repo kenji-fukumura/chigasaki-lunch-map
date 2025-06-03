@@ -62,5 +62,13 @@
     "url": "https://tabelog.com/kanagawa/A1406/A140602/14093521/",
     "closed": ["火", "水"],
     "genre": "定食"
+  },
+  {
+    "name": "マサオカ",
+    "lat": 35.328909,
+    "lng": 139.405986,
+    "url": "https://tabelog.com/kanagawa/A1404/A140406/14077866/",
+    "closed": ["月"],
+    "genre": "イタリアン"
   }
 ]
