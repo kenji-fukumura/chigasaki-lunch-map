@@ -86,5 +86,21 @@
     "url": "https://tabelog.com/kanagawa/A1404/A140406/14081509/",
     "closed": ["水"],
     "genre": "イタリアン"
+  },
+  {
+    "name": "沖縄そば ひがや",
+    "lat": 35.326613,
+    "lng": 139.398297,
+    "url": "https://tabelog.com/kanagawa/A1404/A140406/14092294/",
+    "closed": ["金"],
+    "genre": "沖縄そば"
+  },
+  {
+    "name": "アメリカンダイナー エイト",
+    "lat": 35.327714,
+    "lng": 139.405363,
+    "url": "https://tabelog.com/kanagawa/A1404/A140406/14079418/",
+    "closed": ["水","木"],
+    "genre": "ハンバーガー"
   }
 ]
