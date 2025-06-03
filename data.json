@@ -70,5 +70,21 @@
     "url": "https://tabelog.com/kanagawa/A1404/A140406/14077866/",
     "closed": ["月"],
     "genre": "イタリアン"
+  },
+  {
+    "name": "Oggi",
+    "lat": 35.329436,
+    "lng": 139.405735,
+    "url": "https://tabelog.com/kanagawa/A1404/A140406/14073644/",
+    "closed": ["水"],
+    "genre": "イタリアン"
+  },
+  {
+    "name": "ピザヤ ショーチャン",
+    "lat": 35.319608,
+    "lng": 139.399784,
+    "url": "https://tabelog.com/kanagawa/A1404/A140406/14081509/",
+    "closed": ["水"],
+    "genre": "イタリアン"
   }
 ]
