@@ -54,19 +54,22 @@ function fetchWeather() {
 // 初期実行
 fetchWeather();
 
-// マーカー表示関数（openPopup引数で制御）
+// マーカー表示関数
 function renderMarkers(restaurants, selectedDay, selectedGenre, openPopup = false) {
+  const showClosed = document.getElementById('show-closed')?.checked ?? false;
+
   restaurantMarkers.forEach(marker => map.removeLayer(marker));
   restaurantMarkers = [];
 
   restaurants.forEach(spot => {
-    if (selectedGenre !== "すべて" && spot.genre !== selectedGenre) {
-      return;
-    }
+    if (selectedGenre !== "すべて" && spot.genre !== selectedGenre) return;
 
     const isClosedToday =
       Array.isArray(spot.closed) &&
       spot.closed.some(day => day.trim() === selectedDay);
+
+    if (isClosedToday && !showClosed) return;
+
     const statusText = isClosedToday ? "❌ 定休日" : "✅ 営業日";
 
     const marker = L.marker([spot.lat, spot.lng]).addTo(map);
@@ -111,18 +114,25 @@ fetch('data.json')
     const homePopup = L.popup({ autoClose: false, closeOnClick: false }).setContent(myHome.label);
     homeMarker.bindPopup(homePopup);
 
-    // 曜日変更イベント（ポップアップ非表示）
+    // 曜日変更イベント
     document.getElementById('weekday').addEventListener('change', () => {
       const selectedDay = document.getElementById('weekday').value;
       const selectedGenre = document.getElementById('genre').value;
       renderMarkers(restaurantsData, selectedDay, selectedGenre, false);
     });
 
-    // ジャンル変更イベント（ポップアップ表示 ※ただし"すべて"以外）
+    // ジャンル変更イベント
     document.getElementById('genre').addEventListener('change', () => {
       const selectedDay = document.getElementById('weekday').value;
       const selectedGenre = document.getElementById('genre').value;
       renderMarkers(restaurantsData, selectedDay, selectedGenre, true);
+    });
+
+    // チェックボックス変更イベント（定休日含む）
+    document.getElementById('show-closed').addEventListener('change', () => {
+      const selectedDay = document.getElementById('weekday').value;
+      const selectedGenre = document.getElementById('genre').value;
+      renderMarkers(restaurantsData, selectedDay, selectedGenre, false);
     });
   });
 
