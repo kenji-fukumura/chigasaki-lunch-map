@@ -67,10 +67,17 @@ function renderMarkers(restaurants, selectedDay, selectedGenre, openPopup = fals
     const isClosedToday =
       Array.isArray(spot.closed) &&
       spot.closed.some(day => day.trim() === selectedDay);
+    const isIrregular = spot.irregular === true;
 
+    // 定休日除外（不定休は表示対象）
     if (isClosedToday && !showClosed) return;
 
-    const statusText = isClosedToday ? "❌ 定休日" : "✅ 営業日";
+    let statusText = "✅ 営業日";
+    if (isIrregular) {
+      statusText = "⚠️ 不定休";
+    } else if (isClosedToday) {
+      statusText = "❌ 定休日";
+    }
 
     const marker = L.marker([spot.lat, spot.lng]).addTo(map);
     const popup = L.popup({ autoClose: false, closeOnClick: false })
