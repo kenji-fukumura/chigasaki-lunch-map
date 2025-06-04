@@ -5,7 +5,8 @@
     "lng": 139.404031,
     "url": "https://s.tabelog.com/kanagawa/A1404/A140406/14055872/",
     "closed": ["水"],
-    "genre": "中華"
+    "genre": "中華",
+    "irregular": false
   },
   {
     "name": "老李",
@@ -13,7 +14,8 @@
     "lng": 139.404058,
     "url": "https://tabelog.com/kanagawa/A1404/A140406/14011018/",
     "closed": [],
-    "genre": "中華"
+    "genre": "中華",
+    "irregular": false
   },
   {
     "name": "麺や鎧",
@@ -21,7 +23,8 @@
     "lng": 139.406023,
     "url": "https://s.tabelog.com/kanagawa/A1404/A140406/14013659/",
     "closed": ["月", "火"],
-    "genre": "ラーメン"
+    "genre": "ラーメン",
+    "irregular": false
   },
   {
     "name": "えぼし麺 菜良",
@@ -29,7 +32,8 @@
     "lng": 139.406142,
     "url": "https://tabelog.com/kanagawa/A1404/A140406/14029180/",
     "closed": ["月"],
-    "genre": "ラーメン"
+    "genre": "ラーメン",
+    "irregular": false
   },
   {
     "name": "ら〜めんBUBU",
@@ -37,7 +41,8 @@
     "lng": 139.406973,
     "url": "https://tabelog.com/kanagawa/A1404/A140406/14015241/",
     "closed": ["火"],
-    "genre": "ラーメン"
+    "genre": "ラーメン",
+    "irregular": false
   },
   {
     "name": "ぐるぐるDining",
@@ -45,7 +50,8 @@
     "lng": 139.406590,
     "url": "https://tabelog.com/kanagawa/A1404/A140406/14039745/",
     "closed": ["月","火"],
-    "genre": "洋食"
+    "genre": "洋食",
+    "irregular": false
   },
   {
     "name": "いろどり食堂",
@@ -53,7 +59,8 @@
     "lng": 139.401232,
     "url": "https://tabelog.com/kanagawa/A1404/A140406/14080119/",
     "closed": ["月"],
-    "genre": "定食"
+    "genre": "定食",
+    "irregular": false
   },
   {
     "name": "ホルモンマルモ",
@@ -61,7 +68,8 @@
     "lng": 139.406217,
     "url": "https://tabelog.com/kanagawa/A1404/A140406/14072429/",
     "closed": [],
-    "genre": "焼肉"
+    "genre": "焼肉",
+    "irregular": false
   },
   {
     "name": "マサオカ",
@@ -69,7 +77,8 @@
     "lng": 139.405986,
     "url": "https://tabelog.com/kanagawa/A1404/A140406/14077866/",
     "closed": ["月"],
-    "genre": "イタリアン"
+    "genre": "イタリアン",
+    "irregular": false
   },
   {
     "name": "Oggi",
@@ -77,7 +86,8 @@
     "lng": 139.405735,
     "url": "https://tabelog.com/kanagawa/A1404/A140406/14073644/",
     "closed": ["水"],
-    "genre": "イタリアン"
+    "genre": "イタリアン",
+    "irregular": false
   },
   {
     "name": "ピザヤ ショーチャン",
@@ -85,7 +95,8 @@
     "lng": 139.399784,
     "url": "https://tabelog.com/kanagawa/A1404/A140406/14081509/",
     "closed": ["水"],
-    "genre": "イタリアン"
+    "genre": "イタリアン",
+    "irregular": false
   },
   {
     "name": "沖縄そば ひがや",
@@ -93,7 +104,25 @@
     "lng": 139.398297,
     "url": "https://tabelog.com/kanagawa/A1404/A140406/14092294/",
     "closed": ["金"],
-    "genre": "沖縄そば"
+    "genre": "沖縄そば",
+    "irregular": false
+  },{
+    "name": "ななし食堂",
+    "lat": 35.327597,
+    "lng": 139.404485,
+    "url": "https://s.tabelog.com/kanagawa/A1404/A140406/14056789/",
+    "closed": [],
+    "genre": "定食",
+    "irregular": true
+  },
+  {
+    "name": "赤とんがらし",
+    "lat": 35.324771,
+    "lng": 139.406319,
+    "url": "https://s.tabelog.com/kanagawa/A1404/A140406/14018666/",
+    "closed": ["木"],
+    "genre": "焼肉",
+    "irregular": false
   },
   {
     "name": "アメリカンダイナー エイト",
@@ -101,6 +130,7 @@
     "lng": 139.405363,
     "url": "https://tabelog.com/kanagawa/A1404/A140406/14079418/",
     "closed": ["水","木"],
-    "genre": "ハンバーガー"
+    "genre": "ハンバーガー",
+    "irregular": false
   }
 ]
